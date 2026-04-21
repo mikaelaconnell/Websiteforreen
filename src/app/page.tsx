@@ -113,6 +113,14 @@ const testingAreas = [
   "Gynecologic Cancer Risk",
 ];
 
+const navLinks = [
+  { href: "#mission", label: "Mission" },
+  { href: "#focus", label: "Focus Areas" },
+  { href: "#science", label: "Science" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#waitlist", label: "Join Waitlist" },
+];
+
 function Accordion({
   items,
 }: {
@@ -121,23 +129,27 @@ function Accordion({
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-3xl">
       {items.map((item, i) => (
-        <div key={item.title} className="border-b border-gray-200">
+        <div key={item.title} className="border-b border-border">
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="flex w-full items-center justify-between py-5 text-left"
+            className="flex w-full items-center justify-between py-6 text-left"
           >
-            <span className="text-lg tracking-wide">{item.title}</span>
-            <span className="text-xl text-muted ml-4">
+            <span className="text-lg sm:text-xl font-serif">{item.title}</span>
+            <span className="text-2xl text-muted ml-4 shrink-0">
               {openIndex === i ? "−" : "+"}
             </span>
           </button>
-          {openIndex === i && (
-            <p className="pb-5 text-sm text-muted leading-relaxed">
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              openIndex === i ? "max-h-40 pb-6" : "max-h-0"
+            }`}
+          >
+            <p className="text-sm text-muted leading-relaxed">
               {item.content}
             </p>
-          )}
+          </div>
         </div>
       ))}
     </div>
@@ -145,61 +157,124 @@ function Accordion({
 }
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Nav */}
-      <header className="flex items-center justify-between px-8 py-6 lg:px-16">
-        <span className="text-xl font-semibold tracking-tight">reen</span>
-        <a
-          href="#waitlist"
-          className="text-sm uppercase tracking-widest hover:text-muted transition-colors"
-        >
-          Get Early Access
-        </a>
+      <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/50">
+        <div className="flex items-center justify-between px-6 py-4 lg:px-12">
+          <a href="/" className="text-2xl font-serif font-bold tracking-tight">
+            reen
+          </a>
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="text-xs uppercase tracking-widest text-muted hover:text-foreground transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="#waitlist"
+            className="hidden md:inline-flex rounded-full bg-accent px-5 py-2 text-xs uppercase tracking-widest text-white hover:bg-accent/90 transition-colors"
+          >
+            Join Waitlist
+          </a>
+          <button
+            className="md:hidden text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? "✕" : "☰"}
+          </button>
+        </div>
+        {mobileMenuOpen && (
+          <nav className="md:hidden px-6 pb-4 flex flex-col gap-3">
+            {navLinks.map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="text-sm text-muted hover:text-foreground"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
 
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-8 py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight leading-tight max-w-3xl">
-          Women&apos;s health, decoded.
-        </h1>
-        <p className="mt-6 text-base text-muted max-w-2xl leading-relaxed">
-          Advanced testing and care delivery for fertility, chronic gynecologic
-          symptoms, hormonal imbalances, perimenopause, and reproductive cancer
-          screening. Launching Spring 2026.
+      <section className="flex flex-col items-center justify-center px-6 py-28 sm:py-36 lg:py-44 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-accent mb-6">
+          Launching Spring 2026
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full max-w-lg">
-          <input
-            type="text"
-            placeholder="First Name"
-            className="flex-1 rounded-full border border-gray-300 px-5 py-3 text-sm bg-transparent outline-none focus:border-foreground transition-colors"
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            className="flex-1 rounded-full border border-gray-300 px-5 py-3 text-sm bg-transparent outline-none focus:border-foreground transition-colors"
-          />
-        </div>
-        <input
-          type="email"
-          placeholder="Email"
-          className="mt-4 w-full max-w-lg rounded-full border border-gray-300 px-5 py-3 text-sm bg-transparent outline-none focus:border-foreground transition-colors"
-        />
-        <button className="mt-6 rounded-full bg-foreground px-8 py-3 text-sm uppercase tracking-widest text-background hover:bg-gray-800 transition-colors">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.1] max-w-4xl">
+          Paving a new standard for hormonal health
+        </h1>
+        <p className="mt-8 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
+          Because your body doesn&apos;t stay the same — and neither should your
+          care. Advanced testing and personalized insights for fertility,
+          hormonal imbalances, perimenopause, and reproductive cancer screening.
+        </p>
+        <a
+          href="#waitlist"
+          className="mt-10 inline-flex rounded-full bg-foreground px-8 py-3.5 text-sm uppercase tracking-widest text-background hover:bg-foreground/90 transition-colors"
+        >
           Get Early Access
-        </button>
+        </a>
+      </section>
+
+      {/* Mission */}
+      <section
+        id="mission"
+        className="bg-accent text-white px-6 py-24 lg:px-12 text-center"
+      >
+        <p className="text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
+          Our Mission
+        </p>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif max-w-3xl mx-auto leading-tight">
+          AI-powered precision medicine, built for women.
+        </h2>
+        <p className="mt-6 text-sm sm:text-base opacity-70 max-w-2xl mx-auto leading-relaxed">
+          Women want more control over their health. The standard of care is too
+          slow, too reactive, too one-size-fits-all, or non-existent. We are
+          here to change that.
+        </p>
+      </section>
+
+      {/* Stats */}
+      <section className="px-6 py-24 lg:px-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 max-w-5xl mx-auto text-center">
+          {stats.map((stat) => (
+            <div key={stat.value}>
+              <p className="text-4xl sm:text-5xl lg:text-6xl font-serif text-accent">
+                {stat.value}
+              </p>
+              <p className="mt-4 text-sm text-muted leading-relaxed">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Focus Areas */}
-      <section className="px-8 py-20 lg:px-16">
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-4">
+      <section id="focus" className="px-6 py-24 lg:px-12">
+        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
+          What We Cover
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
           Precision Medicine. Personal Results.
         </h2>
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
           {focusAreas.map((area) => (
             <div key={area.title} className="text-center">
-              <div className="aspect-[3/4] bg-gray-100 mb-6" />
-              <h3 className="text-lg font-serif mb-3">{area.title}</h3>
+              <div className="aspect-[3/4] bg-border/30 rounded-sm mb-6" />
+              <h3 className="text-xl font-serif mb-3">{area.title}</h3>
               <p className="text-sm text-muted leading-relaxed">
                 {area.description}
               </p>
@@ -208,42 +283,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission + Stats */}
-      <section className="bg-[#6c63ff] text-white px-8 py-20 lg:px-16 text-center">
-        <h2 className="text-2xl sm:text-3xl font-serif max-w-3xl mx-auto">
-          AI-powered precision medicine, built for women.
-        </h2>
-        <p className="mt-4 text-sm opacity-80 max-w-3xl mx-auto leading-relaxed">
-          Women want more control over their health. The standard of care is too
-          slow, too reactive, too one-size-fits-all, or non-existent. We are
-          here to change that.
-        </p>
-      </section>
-
-      <section className="px-8 py-20 lg:px-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 max-w-4xl mx-auto text-center">
-          {stats.map((stat) => (
-            <div key={stat.value}>
-              <p className="text-4xl sm:text-5xl font-serif text-muted">
-                {stat.value}
-              </p>
-              <p className="mt-3 text-sm text-muted leading-relaxed">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* The Science */}
-      <section className="bg-[#e8e4f0] px-8 py-20 lg:px-16">
+      <section id="science" className="bg-[#f0ece4] px-6 py-24 lg:px-12">
+        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
+          Our Approach
+        </p>
         <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
           The Science
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl mx-auto">
           {science.map((item) => (
             <div key={item.title} className="text-center">
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-border/50" />
+              <h3 className="text-lg font-serif font-bold mb-2">
+                {item.title}
+              </h3>
               <p className="text-sm text-muted leading-relaxed">
                 {item.description}
               </p>
@@ -252,49 +306,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Accordion */}
-      <section className="px-8 py-20 lg:px-16">
-        <p className="text-center text-base text-muted max-w-3xl mx-auto leading-relaxed mb-12">
+      {/* Services */}
+      <section className="px-6 py-24 lg:px-12">
+        <p className="text-center text-lg sm:text-xl font-serif max-w-4xl mx-auto leading-relaxed mb-16">
           Delivering female-focused science, precision medicine and concierge
           care at an accessible price. Rewriting women&apos;s health testing
           with actionable answers and holistic support. This is healthcare that
           finally puts women first.
         </p>
         <Accordion items={services} />
-        <div className="text-center mt-10">
-          <a
-            href="#waitlist"
-            className="text-sm uppercase tracking-widest underline underline-offset-4 hover:text-muted transition-colors"
-          >
-            Join the Waitlist
-          </a>
-        </div>
       </section>
 
       {/* How It Works */}
-      <section className="px-8 py-20 lg:px-16">
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-12">
+      <section id="how-it-works" className="bg-[#f0ece4] px-6 py-24 lg:px-12">
+        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
+          Your Journey
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
           How It Works
         </h2>
         <Accordion items={howItWorks} />
-        <div className="text-center mt-10">
-          <a
-            href="#waitlist"
-            className="text-sm uppercase tracking-widest underline underline-offset-4 hover:text-muted transition-colors"
-          >
-            Get Early Access
-          </a>
-        </div>
       </section>
 
       {/* Testing Areas */}
-      <section className="px-8 py-20 lg:px-16 text-center">
-        <p className="text-sm uppercase tracking-widest text-muted mb-8">
+      <section className="px-6 py-24 lg:px-12 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-accent mb-8">
           Advanced at-home testing
         </p>
-        <div className="space-y-4 max-w-2xl mx-auto">
+        <div className="space-y-5 max-w-2xl mx-auto">
           {testingAreas.map((area) => (
-            <p key={area} className="text-2xl sm:text-3xl font-serif">
+            <p key={area} className="text-2xl sm:text-3xl lg:text-4xl font-serif">
               {area}
             </p>
           ))}
@@ -302,11 +343,17 @@ export default function Home() {
       </section>
 
       {/* Waitlist */}
-      <section id="waitlist" className="px-8 py-20 lg:px-16 text-center">
+      <section
+        id="waitlist"
+        className="bg-accent text-white px-6 py-24 lg:px-12 text-center"
+      >
+        <p className="text-xs uppercase tracking-[0.3em] opacity-60 mb-4">
+          Be the first
+        </p>
         <h2 className="text-3xl sm:text-4xl font-serif mb-4">
           Join the Waitlist
         </h2>
-        <p className="text-sm text-muted mb-10">
+        <p className="text-sm opacity-70 mb-10 max-w-lg mx-auto">
           Launching Spring 2026: AI-powered insights revealing the root causes
           of women&apos;s health.
         </p>
@@ -314,30 +361,39 @@ export default function Home() {
           <input
             type="text"
             placeholder="First Name"
-            className="flex-1 rounded-full border border-gray-300 px-5 py-3 text-sm bg-transparent outline-none focus:border-foreground transition-colors"
+            className="flex-1 rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors"
           />
           <input
             type="text"
             placeholder="Last Name"
-            className="flex-1 rounded-full border border-gray-300 px-5 py-3 text-sm bg-transparent outline-none focus:border-foreground transition-colors"
+            className="flex-1 rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors"
           />
         </div>
         <input
           type="email"
           placeholder="Email"
-          className="mt-4 w-full max-w-lg mx-auto rounded-full border border-gray-300 px-5 py-3 text-sm bg-transparent outline-none focus:border-foreground transition-colors block"
+          className="mt-4 w-full max-w-lg mx-auto rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors block"
         />
-        <button className="mt-6 rounded-full bg-foreground px-8 py-3 text-sm uppercase tracking-widest text-background hover:bg-gray-800 transition-colors">
+        <button className="mt-6 rounded-full bg-white text-accent px-8 py-3.5 text-sm uppercase tracking-widest hover:bg-white/90 transition-colors">
           Get Early Access
         </button>
       </section>
 
       {/* Footer */}
-      <footer className="px-8 py-8 lg:px-16 border-t border-gray-200">
-        <div className="flex items-center justify-between text-xs text-muted">
-          <span>
-            &copy; {new Date().getFullYear()} Reen. All rights reserved.
-          </span>
+      <footer className="px-6 py-8 lg:px-12 border-t border-border">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+          <span className="font-serif text-base text-foreground">reen</span>
+          <div className="flex gap-6">
+            {navLinks.map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="hover:text-foreground transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
           <a
             href="mailto:mikaelaconnell14@gmail.com"
             className="hover:text-foreground transition-colors"
@@ -345,6 +401,9 @@ export default function Home() {
             mikaelaconnell14@gmail.com
           </a>
         </div>
+        <p className="text-center text-xs text-muted mt-6">
+          &copy; {new Date().getFullYear()} Reen. All rights reserved.
+        </p>
       </footer>
     </div>
   );
