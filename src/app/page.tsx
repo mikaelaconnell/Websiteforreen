@@ -312,19 +312,6 @@ export default function Home() {
         <div className="mt-10 w-full max-w-lg">
           <WaitlistForm />
         </div>
-        {/* Hero phone mockup */}
-        <div className="mt-16 relative">
-          <div className="mx-auto w-64 sm:w-72 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-foreground/10">
-            <Image
-              src="/images/app-home.png"
-              alt="Reen app home screen"
-              width={390}
-              height={844}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        </div>
       </section>
 
       {/* Mission */}
