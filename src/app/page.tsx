@@ -328,17 +328,11 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
           {focusAreas.map((area) => (
-            <div key={area.title} className="text-center">
-              <div className="aspect-[3/4] overflow-hidden rounded-sm mb-6">
-                <Image
-                  src={area.image}
-                  alt={area.title}
-                  width={600}
-                  height={800}
-                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-              <h3 className="text-xl font-serif mb-3">{area.title}</h3>
+            <div
+              key={area.title}
+              className="bg-white/60 rounded-lg p-8 text-center hover:shadow-md transition-shadow"
+            >
+              <h3 className="text-xl font-serif mb-4">{area.title}</h3>
               <p className="text-sm text-muted leading-relaxed">
                 {area.description}
               </p>
