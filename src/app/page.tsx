@@ -129,28 +129,29 @@ const stats = [
 
 const science = [
   {
-    title: "Better Sampling",
+    title: "Better Data Collection",
     description:
-      "Menstrual fluid holds a treasure-trove of information traditional blood tests miss.",
+      "Comprehensive self-reported symptoms, cycle data, lab results, and doctor visit notes — the information traditional care overlooks.",
   },
   {
     title: "Machine Learning & AI",
     description:
-      "Advanced algorithms uncover patterns across millions of data points to personalize insights for every woman.",
+      "Advanced algorithms uncover patterns across your data to personalize insights for your unique biology.",
   },
   {
-    title: "Advanced Sequencing",
-    description: "Reveals deeper patterns in women's health.",
+    title: "Wearable Integration",
+    description:
+      "Passively sync Apple Health, Oura Ring, and Whoop — HRV, sleep, temperature, and recovery data feed your health picture automatically.",
   },
   {
     title: "Longitudinal Tracking",
     description:
-      "Continuous testing reveals how your health changes over time — catching shifts before symptoms appear.",
+      "Continuous data collection reveals how your health changes over time — catching shifts before symptoms appear.",
   },
   {
     title: "Holistic Integration",
     description:
-      "Your body is an interconnected network — our models integrate many layers of information into one complete picture.",
+      "Your body is an interconnected network — Reen integrates many layers of information into one complete picture.",
   },
   {
     title: "Risk Insights + Action Plan",
@@ -161,51 +162,43 @@ const science = [
 
 const services = [
   {
-    title: "Screening & Early Detection",
+    title: "Free — Screening & Early Detection",
     content:
-      "Proactive screening powered by AI catches warning signs early — before they become diagnoses. We analyze biomarkers, symptoms, and patterns to give you clarity.",
+      "Proactive screening powered by AI catches warning signs early. Cycle tracking, symptom logging, wearable sync, and basic insights — all free.",
   },
   {
-    title: "Precision Insights",
+    title: "Premium — Precision Insights ($14.99/mo)",
     content:
-      "Your data tells a story. We use machine learning to decode it — delivering personalized, actionable health insights tailored to your body.",
+      "Deep personalized analysis, trend detection, AI-generated doctor advocacy reports, full lab tracking, and condition-specific modules for PCOS, perimenopause, and fertility.",
   },
   {
-    title: "Concierge Care",
+    title: "Ask Reen — AI Health Assistant",
     content:
-      "Connect with clinicians who understand your results and your goals. Holistic support that puts you at the center.",
+      "Ask questions in plain language and get personalized, evidence-based answers grounded in medical literature and your own tracked data. \"Why am I so tired during my luteal phase?\" — Reen knows.",
   },
 ];
 
 const howItWorks = [
   {
-    title: "1. Collect Your Samples",
+    title: "1. Log Your Data",
     content:
-      "Simple at-home collection kits delivered to your door. No clinic visits needed.",
+      "Track your cycle, symptoms, medications, lab results, and doctor visits. Connect Apple Health, Oura, or Whoop to sync biometrics automatically.",
   },
   {
-    title: "2. Visualize Your Data",
+    title: "2. See Your Patterns",
     content:
-      "Our AI platform analyzes your samples and presents clear, visual insights about your hormonal health.",
+      "Reen's AI analyzes your data and surfaces insights — symptom-cycle correlations, risk scores, and trend detection across every cycle.",
   },
   {
-    title: "3. Meet with Clinicians",
+    title: "3. Generate Reports",
     content:
-      "Review your results with specialized women's health clinicians who create a personalized plan.",
+      "Create comprehensive doctor advocacy reports combining all your tracked data — designed to bring to appointments so you get heard.",
   },
   {
-    title: "4. Rewrite Your Future",
+    title: "4. Take Control",
     content:
-      "Ongoing monitoring and AI-powered recommendations help you take control of your health trajectory.",
+      "Use personalized risk assessments, condition-specific insights, and evidence-based recommendations to advocate for your own health.",
   },
-];
-
-const testingAreas = [
-  "Fertility & Reproductive Health",
-  "Endometriosis, PCOS & More",
-  "Hormone & Metabolic Health",
-  "Perimenopause & Menopause",
-  "Gynecologic Cancer Risk",
 ];
 
 const navLinks = [
@@ -312,8 +305,9 @@ export default function Home() {
         </h1>
         <p className="mt-8 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
           Because your body doesn&apos;t stay the same — and neither should your
-          care. Advanced testing and personalized insights for fertility,
-          hormonal imbalances, perimenopause, and reproductive cancer screening.
+          care. AI-powered insights combining your cycle data, symptoms,
+          wearables, and labs — for fertility, hormonal imbalances,
+          perimenopause, and cancer risk screening.
         </p>
         <div className="mt-10 w-full max-w-lg">
           <WaitlistForm />
@@ -415,12 +409,12 @@ export default function Home() {
 
       {/* Services */}
       <section className="px-6 py-24 lg:px-12">
-        <p className="text-center text-lg sm:text-xl font-serif max-w-4xl mx-auto leading-relaxed mb-16">
-          Delivering female-focused science, precision medicine and concierge
-          care at an accessible price. Rewriting women&apos;s health testing
-          with actionable answers and holistic support. This is healthcare that
-          finally puts women first.
+        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
+          Plans
         </p>
+        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
+          Built to grow with you
+        </h2>
         <Accordion items={services} />
       </section>
 
@@ -478,20 +472,6 @@ export default function Home() {
           How It Works
         </h2>
         <Accordion items={howItWorks} />
-      </section>
-
-      {/* Testing Areas */}
-      <section className="px-6 py-24 lg:px-12 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent mb-8">
-          Advanced at-home testing
-        </p>
-        <div className="space-y-5 max-w-2xl mx-auto">
-          {testingAreas.map((area) => (
-            <p key={area} className="text-2xl sm:text-3xl lg:text-4xl font-serif">
-              {area}
-            </p>
-          ))}
-        </div>
       </section>
 
       {/* Waitlist */}
