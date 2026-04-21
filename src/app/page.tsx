@@ -360,10 +360,9 @@ export default function Home() {
           Paving a new standard for hormonal health
         </h1>
         <p className="mt-8 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
-          Because your body doesn&apos;t stay the same — and neither should your
-          care. AI-powered insights combining your cycle data, symptoms,
-          wearables, and labs — for fertility, hormonal imbalances,
-          perimenopause, and cancer risk screening.
+          AI-powered tool for women built by women. Gain insights from your
+          cycle data, symptoms, wearables, and labs for fertility, hormonal
+          imbalances, perimenopause, and cancer risk screening.
         </p>
         <div className="mt-10 w-full max-w-lg">
           <WaitlistForm />
