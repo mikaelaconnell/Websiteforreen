@@ -1,7 +1,59 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import Image from "next/image";
+
+function WaitlistForm({ darkMode = false }: { darkMode?: boolean }) {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    await fetch("https://formsubmit.co/ajax/mikaelaconnell14@gmail.com", {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+    setSubmitted(true);
+    setLoading(false);
+  }
+
+  if (submitted) {
+    return (
+      <p className={`text-sm mt-6 ${darkMode ? "text-white/80" : "text-muted"}`}>
+        You&apos;re on the list! We&apos;ll be in touch.
+      </p>
+    );
+  }
+
+  const inputClass = darkMode
+    ? "flex-1 rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors"
+    : "flex-1 rounded-full border border-gray-300 bg-transparent px-5 py-3 text-sm placeholder-muted outline-none focus:border-foreground transition-colors";
+
+  return (
+    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
+      <div className="flex flex-col sm:flex-row gap-4">
+        <input type="text" name="firstName" placeholder="First Name" required className={inputClass} />
+        <input type="text" name="lastName" placeholder="Last Name" required className={inputClass} />
+      </div>
+      <input type="email" name="email" placeholder="Email" required className={`mt-4 w-full ${inputClass}`} />
+      <button
+        type="submit"
+        disabled={loading}
+        className={`mt-6 rounded-full px-8 py-3.5 text-sm uppercase tracking-widest transition-colors ${
+          darkMode
+            ? "bg-white text-accent hover:bg-white/90"
+            : "bg-foreground text-background hover:bg-foreground/90"
+        }`}
+      >
+        {loading ? "Submitting..." : "Get Early Access"}
+      </button>
+    </form>
+  );
+}
 
 const appFeatures = [
   {
@@ -263,12 +315,9 @@ export default function Home() {
           care. Advanced testing and personalized insights for fertility,
           hormonal imbalances, perimenopause, and reproductive cancer screening.
         </p>
-        <a
-          href="#waitlist"
-          className="mt-10 inline-flex rounded-full bg-foreground px-8 py-3.5 text-sm uppercase tracking-widest text-background hover:bg-foreground/90 transition-colors"
-        >
-          Get Early Access
-        </a>
+        <div className="mt-10 w-full max-w-lg">
+          <WaitlistForm />
+        </div>
         {/* Hero phone mockup */}
         <div className="mt-16 relative">
           <div className="mx-auto w-64 sm:w-72 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-foreground/10">
@@ -460,26 +509,7 @@ export default function Home() {
           Launching Spring 2026: AI-powered insights revealing the root causes
           of women&apos;s health.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-          <input
-            type="text"
-            placeholder="First Name"
-            className="flex-1 rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors"
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            className="flex-1 rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors"
-          />
-        </div>
-        <input
-          type="email"
-          placeholder="Email"
-          className="mt-4 w-full max-w-lg mx-auto rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors block"
-        />
-        <button className="mt-6 rounded-full bg-white text-accent px-8 py-3.5 text-sm uppercase tracking-widest hover:bg-white/90 transition-colors">
-          Get Early Access
-        </button>
+        <WaitlistForm darkMode />
       </section>
 
       {/* Footer */}
