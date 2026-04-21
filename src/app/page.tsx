@@ -132,31 +132,87 @@ const science = [
     title: "Better Data Collection",
     description:
       "Comprehensive self-reported symptoms, cycle data, lab results, and doctor visit notes — the information traditional care overlooks.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
+        <rect x="10" y="6" width="28" height="36" rx="3" />
+        <line x1="16" y1="16" x2="32" y2="16" />
+        <line x1="16" y1="22" x2="28" y2="22" />
+        <line x1="16" y1="28" x2="30" y2="28" />
+        <circle cx="34" cy="34" r="8" fill="#f0ece4" stroke="currentColor" />
+        <path d="M34 30v4h4" />
+      </svg>
+    ),
   },
   {
     title: "Machine Learning & AI",
     description:
       "Advanced algorithms uncover patterns across your data to personalize insights for your unique biology.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
+        <circle cx="24" cy="14" r="4" />
+        <circle cx="12" cy="30" r="4" />
+        <circle cx="36" cy="30" r="4" />
+        <circle cx="24" cy="38" r="4" />
+        <line x1="24" y1="18" x2="12" y2="26" />
+        <line x1="24" y1="18" x2="36" y2="26" />
+        <line x1="12" y1="34" x2="24" y2="34" />
+        <line x1="36" y1="34" x2="24" y2="34" />
+      </svg>
+    ),
   },
   {
     title: "Wearable Integration",
     description:
       "Passively sync Apple Health, Oura Ring, and Whoop — HRV, sleep, temperature, and recovery data feed your health picture automatically.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
+        <rect x="16" y="8" width="16" height="32" rx="8" />
+        <rect x="19" y="16" width="10" height="10" rx="2" />
+        <circle cx="24" cy="21" r="3" />
+        <path d="M10 20 Q6 24, 10 28" />
+        <path d="M38 20 Q42 24, 38 28" />
+      </svg>
+    ),
   },
   {
     title: "Longitudinal Tracking",
     description:
       "Continuous data collection reveals how your health changes over time — catching shifts before symptoms appear.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
+        <path d="M8 36 L16 28 L22 32 L30 18 L40 22" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="40" cy="22" r="2" fill="currentColor" />
+        <line x1="8" y1="40" x2="42" y2="40" />
+        <line x1="8" y1="10" x2="8" y2="40" />
+      </svg>
+    ),
   },
   {
     title: "Holistic Integration",
     description:
       "Your body is an interconnected network — Reen integrates many layers of information into one complete picture.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
+        <circle cx="24" cy="24" r="16" />
+        <circle cx="24" cy="24" r="10" />
+        <circle cx="24" cy="24" r="4" />
+        <line x1="24" y1="4" x2="24" y2="8" />
+        <line x1="24" y1="40" x2="24" y2="44" />
+        <line x1="4" y1="24" x2="8" y2="24" />
+        <line x1="40" y1="24" x2="44" y2="24" />
+      </svg>
+    ),
   },
   {
     title: "Risk Insights + Action Plan",
     description:
       "Predictive models identify early warning signs and personalize care based on your unique risk profile.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
+        <path d="M24 6 L42 18 V34 L24 44 L6 34 V18 Z" />
+        <polyline points="16,24 22,30 34,18" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+      </svg>
+    ),
   },
 ];
 
@@ -382,7 +438,9 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl mx-auto">
           {science.map((item) => (
             <div key={item.title} className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-border/50" />
+              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center text-accent">
+                {item.icon}
+              </div>
               <h3 className="text-lg font-serif font-bold mb-2">
                 {item.title}
               </h3>
