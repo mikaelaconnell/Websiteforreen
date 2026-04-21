@@ -46,21 +46,25 @@ const focusAreas = [
     title: "Undiagnosed Symptoms",
     description:
       "We decode chronic pelvic pain, painful periods, irregular bleeding, digestive and urinary tract issues with precision risk scores for gynecological conditions like endometriosis and PCOS.",
+    image: "/images/focus-symptoms.jpg",
   },
   {
     title: "Perimenopause & Menopause",
     description:
       "Get your perimenopause stage, symptom forecasting, personalized HRT guidance, and whole-body aging insights — no more guessing.",
+    image: "/images/focus-menopause.jpg",
   },
   {
     title: "Fertility & Reproductive Health",
     description:
       "Reproductive age, miscarriage risk, genetic factors, and nutrient deficiencies — with personalized egg preservation timeline and IVF insights.",
+    image: "/images/focus-fertility.jpg",
   },
   {
     title: "Gynecological Cancer Risk",
     description:
       "Comprehensive cancer risk assessment analyzes genetic predispositions, hormonal patterns, and inflammatory markers for early detection and prevention.",
+    image: "/images/focus-cancer.jpg",
   },
 ];
 
@@ -325,7 +329,15 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
           {focusAreas.map((area) => (
             <div key={area.title} className="text-center">
-              <div className="aspect-[3/4] bg-border/30 rounded-sm mb-6" />
+              <div className="aspect-[3/4] overflow-hidden rounded-sm mb-6">
+                <Image
+                  src={area.image}
+                  alt={area.title}
+                  width={600}
+                  height={800}
+                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
               <h3 className="text-xl font-serif mb-3">{area.title}</h3>
               <p className="text-sm text-muted leading-relaxed">
                 {area.description}
