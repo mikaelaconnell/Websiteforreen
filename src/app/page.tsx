@@ -1,6 +1,45 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+
+const appFeatures = [
+  {
+    title: "Home",
+    subtitle: "Your daily dashboard",
+    description:
+      "Cycle day tracking, health metrics, readiness insights, and symptom logging — all at a glance.",
+    image: "/images/app-home.png",
+  },
+  {
+    title: "Track",
+    subtitle: "Log everything that matters",
+    description:
+      "Period flow, symptoms, medications, mood, and energy — beautifully organized and effortless to use.",
+    image: "/images/app-track.png",
+  },
+  {
+    title: "Insights",
+    subtitle: "See the patterns",
+    description:
+      "AI-powered health overview, cycle trends, symptom frequency analysis, and lab result tracking.",
+    image: "/images/app-insights.png",
+  },
+  {
+    title: "Reports",
+    subtitle: "Clinical-grade summaries",
+    description:
+      "Generate HIPAA-compliant health reports for your doctor with one tap. Your data, professionally presented.",
+    image: "/images/app-reports.png",
+  },
+  {
+    title: "Learn",
+    subtitle: "Knowledge library",
+    description:
+      "Curated clinical insights on endometriosis, PCOS, perimenopause, HRT, thyroid health, and more.",
+    image: "/images/app-learn.png",
+  },
+];
 
 const focusAreas = [
   {
@@ -226,6 +265,19 @@ export default function Home() {
         >
           Get Early Access
         </a>
+        {/* Hero phone mockup */}
+        <div className="mt-16 relative">
+          <div className="mx-auto w-64 sm:w-72 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-foreground/10">
+            <Image
+              src="/images/app-home.png"
+              alt="Reen app home screen"
+              width={390}
+              height={844}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+        </div>
       </section>
 
       {/* Mission */}
@@ -315,6 +367,51 @@ export default function Home() {
           finally puts women first.
         </p>
         <Accordion items={services} />
+      </section>
+
+      {/* App Showcase */}
+      <section className="px-6 py-24 lg:px-12 bg-[#f0ece4]">
+        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
+          The App
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-6">
+          Everything you need, in one place
+        </h2>
+        <p className="text-sm text-muted text-center max-w-xl mx-auto mb-16 leading-relaxed">
+          Five powerful tabs designed to help you track, understand, and take
+          control of your hormonal health.
+        </p>
+        <div className="space-y-24 max-w-5xl mx-auto">
+          {appFeatures.map((feature, i) => (
+            <div
+              key={feature.title}
+              className={`flex flex-col items-center gap-12 lg:gap-20 ${
+                i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+              }`}
+            >
+              <div className="w-56 sm:w-64 shrink-0 rounded-[2.5rem] overflow-hidden shadow-xl border-6 border-white/60">
+                <Image
+                  src={feature.image}
+                  alt={`Reen app ${feature.title} screen`}
+                  width={390}
+                  height={844}
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className={`flex-1 ${i % 2 === 0 ? "lg:text-left" : "lg:text-right"} text-center`}>
+                <p className="text-xs uppercase tracking-[0.3em] text-accent mb-2">
+                  {feature.subtitle}
+                </p>
+                <h3 className="text-2xl sm:text-3xl font-serif mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-muted leading-relaxed max-w-md mx-auto lg:mx-0">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* How It Works */}
