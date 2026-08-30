@@ -462,12 +462,12 @@ export default function Home() {
           </h2>
           <p className="text-base text-muted leading-relaxed">
             I&apos;m Mikaela. I worked as a nurse in oncology medicine for
-            several years before transitioning careers into an AI/ML engineer
-            and studying data science and AI at Harvard. Reen comes from my
-            passion for using AI and data to advance women&apos;s health:
-            providing insights for more women so they can better understand
-            their health and get better and faster diagnoses and treatments to
-            feel better.
+            several years before transitioning careers into an AI/ML engineer.
+            I went on to study data science and AI at Harvard, and Reen is
+            where those two lives meet: a passion for using AI and data to
+            advance women&apos;s health, providing insights for more women so
+            they can better understand their health and get better and faster
+            diagnoses and treatments to feel better.
           </p>
           <p className="mt-6 text-base text-muted leading-relaxed">
             I named this app after my grandma, Noreen{" "}
