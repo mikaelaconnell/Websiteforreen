@@ -248,7 +248,7 @@ export default function Home() {
       <section className="px-4 pt-6 sm:px-6 lg:px-10">
         <div className="grid md:grid-cols-2 gap-4">
           <div className="panel bg-section-alt px-6 py-16 sm:px-10 lg:px-14 lg:py-24 flex flex-col justify-center">
-            <p className="label-pill mb-6 self-start">Coming soon to the App Store</p>
+            <p className="label-pill mb-6 self-start">Launching Fall 2026 on the App Store</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif tracking-tight leading-[1.05]">
               Finally understand why you feel this way.
             </h1>
@@ -366,48 +366,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* App Showcase */}
-      <section className="px-6 py-24 lg:px-12 bg-[#f0ece4]">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
-          The App
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-6">
-          Everything you need, in one place
-        </h2>
-        <p className="text-sm text-muted text-center max-w-xl mx-auto mb-16 leading-relaxed">
-          Five powerful tabs designed to help you track, understand, and take
-          control of your hormonal health.
-        </p>
-        <div className="space-y-24 max-w-5xl mx-auto">
-          {appFeatures.map((feature, i) => (
-            <div
-              key={feature.title}
-              className={`flex flex-col items-center gap-12 lg:gap-20 ${
-                i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              }`}
-            >
-              <div className="w-56 sm:w-64 shrink-0 rounded-[2.5rem] overflow-hidden shadow-xl border-6 border-white/60">
-                <Image
-                  src={feature.image}
-                  alt={`Reen app ${feature.title} screen`}
-                  width={390}
-                  height={844}
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className={`flex-1 ${i % 2 === 0 ? "lg:text-left" : "lg:text-right"} text-center`}>
-                <p className="text-xs uppercase tracking-[0.3em] text-accent mb-2">
-                  {feature.subtitle}
-                </p>
-                <h3 className="text-2xl sm:text-3xl font-serif mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed max-w-md mx-auto lg:mx-0">
-                  {feature.description}
-                </p>
-              </div>
+      {/* App tour */}
+      <section id="app" className="px-4 pt-6 sm:px-6 lg:px-10">
+        <div className="panel bg-section-alt px-6 py-16 sm:px-12 lg:py-24">
+          <Reveal className="text-center">
+            <span className="label-pill">The app</span>
+            <h2 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-serif mb-5">
+              Everything you need, in one place
+            </h2>
+            <p className="text-sm sm:text-base text-muted max-w-xl mx-auto mb-16 leading-relaxed">
+              Five powerful tabs designed to help you track, understand, and
+              take control of your hormonal health.
+            </p>
+          </Reveal>
+          <div className="space-y-24 max-w-5xl mx-auto">
+            {appFeatures.map((feature, i) => (
+              <Reveal key={feature.title}>
+                <div
+                  className={`flex flex-col items-center gap-12 lg:gap-20 ${
+                    i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  }`}
+                >
+                  <div
+                    className="parallax-float w-56 sm:w-64 shrink-0 rounded-[2rem] overflow-hidden shadow-xl border-6 border-white"
+                    style={{
+                      transform: `translateY(${
+                        (i % 2 === 0 ? -1 : 1) * parallaxY * 0.012
+                      }px)`,
+                    }}
+                  >
+                    <Image
+                      src={feature.image}
+                      alt={`Reen app ${feature.title} screen`}
+                      width={390}
+                      height={844}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div
+                    className={`flex-1 ${
+                      i % 2 === 0 ? "lg:text-left" : "lg:text-right"
+                    } text-center`}
+                  >
+                    <p className="text-xs uppercase tracking-[0.3em] text-rose mb-2">
+                      {feature.subtitle}
+                    </p>
+                    <h3 className="text-2xl sm:text-3xl font-serif mb-4">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-muted leading-relaxed max-w-md mx-auto lg:mx-0 lg:inline-block">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="text-center">
+            <div className="mt-20 flex flex-wrap justify-center gap-3">
+              {["Daily tracking", "Cycle insights", "Wearable sync", "Lab results", "AI doctor reports"].map(
+                (chip) => (
+                  <span key={chip} className="chip">{chip}</span>
+                )
+              )}
             </div>
-          ))}
+            <a href="#waitlist" className="btn-pill mt-10 inline-flex min-w-72">
+              Join the waitlist <span aria-hidden>→</span>
+            </a>
+          </Reveal>
         </div>
       </section>
 
