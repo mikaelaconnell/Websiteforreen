@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import WaitlistForm from "./components/WaitlistForm";
+import Reveal from "./components/Reveal";
+import Dial from "./components/Dial";
 
 const appFeatures = [
   {
@@ -351,22 +353,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission */}
-      <section
-        id="mission"
-        className="bg-accent text-white px-6 py-24 lg:px-12 text-center"
-      >
-        <p className="text-xs uppercase tracking-[0.3em] opacity-60 mb-6">
-          Our Mission
-        </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif max-w-3xl mx-auto leading-tight">
-          AI-powered precision medicine, built for women.
-        </h2>
-        <p className="mt-6 text-sm sm:text-base opacity-70 max-w-2xl mx-auto leading-relaxed">
-          Women want more control over their health. The standard of care is too
-          slow, too reactive, too one-size-fits-all, or non-existent. We are
-          here to change that.
-        </p>
+      {/* What if: spinning dial */}
+      <section id="mission" className="px-4 pt-6 sm:px-6 lg:px-10">
+        <div className="panel bg-accent px-6 py-20 sm:px-12 lg:py-28 overflow-hidden">
+          <Reveal>
+            <Dial />
+          </Reveal>
+        </div>
       </section>
 
       {/* Stats */}
