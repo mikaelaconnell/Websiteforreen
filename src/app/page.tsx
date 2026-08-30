@@ -5,6 +5,7 @@ import Image from "next/image";
 import WaitlistForm from "./components/WaitlistForm";
 import Reveal from "./components/Reveal";
 import Dial from "./components/Dial";
+import HeroDemo from "./components/HeroDemo";
 
 const appFeatures = [
   {
@@ -12,7 +13,7 @@ const appFeatures = [
     subtitle: "Your daily dashboard",
     description:
       "Cycle day tracking, health metrics, readiness insights, and symptom logging — all at a glance.",
-    image: "/images/app-home.png",
+    image: "/images/app-home-card.png",
   },
   {
     title: "Track",
@@ -309,10 +310,10 @@ export default function Home() {
 
       {/* Hero */}
       <section className="px-4 pt-6 sm:px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-4">
-          <div className="panel bg-section-alt px-6 py-16 sm:px-12 lg:px-14 lg:py-24 flex flex-col justify-center">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="panel bg-section-alt px-6 py-16 sm:px-10 lg:px-14 lg:py-24 flex flex-col justify-center">
             <p className="label-pill mb-6 self-start">Coming soon to the App Store</p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.05]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif tracking-tight leading-[1.05]">
               Finally understand why you feel this way.
             </h1>
             <p className="mt-6 text-base sm:text-lg text-muted max-w-xl leading-relaxed">
@@ -323,7 +324,7 @@ export default function Home() {
               Join the waitlist <span aria-hidden>→</span>
             </a>
           </div>
-          <div className="panel bg-accent relative overflow-hidden min-h-72 lg:min-h-0">
+          <div className="panel bg-accent relative overflow-hidden min-h-[24rem] md:min-h-[28rem] flex items-center justify-center px-6 py-16">
             <svg
               viewBox="0 0 600 600"
               preserveAspectRatio="xMidYMid slice"
@@ -336,14 +337,14 @@ export default function Home() {
                   d={`M -20 ${80 + i * 75} C 180 ${80 + i * 75}, 260 300, 620 300`}
                   fill="none"
                   stroke="#faf6ed"
-                  strokeOpacity="0.5"
+                  strokeOpacity="0.25"
                   strokeWidth="1.5"
                   className="hero-line"
                   style={{ animationDelay: `${i * 0.25}s` }}
                 />
               ))}
-              <circle cx="470" cy="300" r="5" fill="#faf6ed" className="hero-dot" />
             </svg>
+            <HeroDemo />
           </div>
         </div>
       </section>
@@ -521,11 +522,8 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <a
-            href="mailto:mikaelaconnell14@gmail.com"
-            className="hover:text-foreground transition-colors"
-          >
-            mikaelaconnell14@gmail.com
+          <a href="#waitlist" className="hover:text-foreground transition-colors">
+            Join the waitlist
           </a>
         </div>
         <p className="text-center text-xs text-muted mt-6">
