@@ -464,10 +464,9 @@ export default function Home() {
             I&apos;m Mikaela. I worked as a nurse in oncology medicine for
             several years before transitioning careers into an AI/ML engineer.
             I went on to study data science and AI at Harvard, and Reen is
-            where those two lives meet: a passion for using AI and data to
-            advance women&apos;s health, providing insights for more women so
-            they can better understand their health and get better and faster
-            diagnoses and treatments to feel better.
+            where those two lives meet: using AI and real data so more women
+            can understand their health, advocate for themselves, and reach
+            diagnoses and treatment faster.
           </p>
           <p className="mt-6 text-base text-muted leading-relaxed">
             I named this app after my grandma, Noreen{" "}
