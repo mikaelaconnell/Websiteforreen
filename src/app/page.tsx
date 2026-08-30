@@ -463,13 +463,13 @@ export default function Home() {
           <p className="text-base text-muted leading-relaxed">
             Before I was an engineer, I was a nurse. I worked in oncology
             medicine for several years. I went on to study data science and AI
-            at Harvard and became an AI engineer, and Reen is where those two
-            lives meet: using AI and real data so more women can understand
-            their health, advocate for themselves, and reach diagnoses and
-            treatment faster.
+            at Harvard to become a machine learning engineer, and Reen is
+            where those two lives meet: using AI and real data so more women
+            can understand their health, advocate for themselves, and reach
+            diagnoses and treatment faster.
           </p>
           <p className="mt-6 text-base text-muted leading-relaxed">
-            I named this app after my grandma, Noreen{" "}
+            This app is named after my grandma, Noreen{" "}
             <span className="text-rose">♥</span>
           </p>
           <p className="mt-8 font-serif text-xl text-accent">Mikaela</p>
