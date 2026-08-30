@@ -8,8 +8,9 @@ Status: Approved by owner
 Refresh the existing Reen marketing site (Next.js app in this repo, deployed to the
 existing Vercel project at reen-website.vercel.app) with a visual polish and updated
 copy. The site's job is to collect early-user waitlist signups ahead of the App Store
-launch. After deploy, optionally attach the custom domain reenhealth.com (purchase
-requires explicit owner approval; roughly $15-20/year charged to the Vercel account).
+launch. After deploy, attach the custom domain reen-health.com (confirmed available;
+purchase requires explicit owner approval; roughly $15-20/year charged to the Vercel
+account).
 
 ## Design direction
 
