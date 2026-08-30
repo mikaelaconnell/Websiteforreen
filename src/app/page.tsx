@@ -461,12 +461,12 @@ export default function Home() {
             Why I built Reen
           </h2>
           <p className="text-base text-muted leading-relaxed">
-            I&apos;m Mikaela. I worked as a nurse in oncology medicine for
-            several years before transitioning careers into an AI/ML engineer.
-            I went on to study data science and AI at Harvard, and Reen is
-            where those two lives meet: using AI and real data so more women
-            can understand their health, advocate for themselves, and reach
-            diagnoses and treatment faster.
+            Before I was an engineer, I was a nurse. I worked in oncology
+            medicine for several years. I went on to study data science and AI
+            at Harvard and became an AI engineer, and Reen is where those two
+            lives meet: using AI and real data so more women can understand
+            their health, advocate for themselves, and reach diagnoses and
+            treatment faster.
           </p>
           <p className="mt-6 text-base text-muted leading-relaxed">
             I named this app after my grandma, Noreen{" "}
