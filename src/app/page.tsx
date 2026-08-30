@@ -12,14 +12,14 @@ const appFeatures = [
     title: "Home",
     subtitle: "Your daily dashboard",
     description:
-      "Cycle day tracking, health metrics, readiness insights, and symptom logging — all at a glance.",
+      "Cycle day tracking, health metrics, readiness insights, and symptom logging, all at a glance.",
     image: "/images/app-home-card.png",
   },
   {
     title: "Track",
     subtitle: "Log everything that matters",
     description:
-      "Period flow, symptoms, medications, mood, and energy — beautifully organized and effortless to use.",
+      "Period flow, symptoms, medications, mood, and energy, beautifully organized and effortless to use.",
     image: "/images/app-track.png",
   },
   {
@@ -55,13 +55,13 @@ const focusAreas = [
   {
     title: "Perimenopause & Menopause",
     description:
-      "Get your perimenopause stage, symptom forecasting, personalized HRT guidance, and whole-body aging insights — no more guessing.",
+      "Get your perimenopause stage, symptom forecasting, personalized HRT guidance, and whole-body aging insights. No more guessing.",
     image: "/images/focus-menopause.jpg",
   },
   {
     title: "Fertility & Reproductive Health",
     description:
-      "Reproductive age, miscarriage risk, genetic factors, and nutrient deficiencies — with personalized egg preservation timeline and IVF insights.",
+      "Reproductive age, miscarriage risk, genetic factors, and nutrient deficiencies, with personalized egg preservation timeline and IVF insights.",
     image: "/images/focus-fertility.jpg",
   },
   {
@@ -95,7 +95,7 @@ const science = [
   {
     title: "Better Data Collection",
     description:
-      "Comprehensive self-reported symptoms, cycle data, lab results, and doctor visit notes — the information traditional care overlooks.",
+      "Comprehensive self-reported symptoms, cycle data, lab results, and doctor visit notes: the information traditional care overlooks.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <rect x="10" y="6" width="28" height="36" rx="3" />
@@ -127,7 +127,7 @@ const science = [
   {
     title: "Wearable Integration",
     description:
-      "Passively sync Apple Health, Oura Ring, and Whoop — HRV, sleep, temperature, and recovery data feed your health picture automatically.",
+      "Passively sync Apple Health, Oura Ring, and Whoop: HRV, sleep, temperature, and recovery data feed your health picture automatically.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <rect x="16" y="8" width="16" height="32" rx="8" />
@@ -141,7 +141,7 @@ const science = [
   {
     title: "Longitudinal Tracking",
     description:
-      "Continuous data collection reveals how your health changes over time — catching shifts before symptoms appear.",
+      "Continuous data collection reveals how your health changes over time, catching shifts before symptoms appear.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <path d="M8 36 L16 28 L22 32 L30 18 L40 22" strokeLinecap="round" strokeLinejoin="round" />
@@ -154,7 +154,7 @@ const science = [
   {
     title: "Holistic Integration",
     description:
-      "Your body is an interconnected network — Reen integrates many layers of information into one complete picture.",
+      "Your body is an interconnected network. Reen integrates many layers of information into one complete picture.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <circle cx="24" cy="24" r="16" />
@@ -180,88 +180,12 @@ const science = [
   },
 ];
 
-const services = [
-  {
-    title: "Free — Screening & Early Detection",
-    content:
-      "Proactive screening powered by AI catches warning signs early. Cycle tracking, symptom logging, wearable sync, and basic insights — all free.",
-  },
-  {
-    title: "Premium — Precision Insights ($14.99/mo)",
-    content:
-      "Deep personalized analysis, trend detection, AI-generated doctor advocacy reports, full lab tracking, and condition-specific modules for PCOS, perimenopause, and fertility.",
-  },
-  {
-    title: "Ask Reen — AI Health Assistant",
-    content:
-      "Ask questions in plain language and get personalized, evidence-based answers grounded in medical literature and your own tracked data. \"Why am I so tired during my luteal phase?\" — Reen knows.",
-  },
-];
-
-const howItWorks = [
-  {
-    title: "1. Log Your Data",
-    content:
-      "Track your cycle, symptoms, medications, lab results, and doctor visits. Connect Apple Health, Oura, or Whoop to sync biometrics automatically.",
-  },
-  {
-    title: "2. See Your Patterns",
-    content:
-      "Reen's AI analyzes your data and surfaces insights — symptom-cycle correlations, risk scores, and trend detection across every cycle.",
-  },
-  {
-    title: "3. Generate Reports",
-    content:
-      "Create comprehensive doctor advocacy reports combining all your tracked data — designed to bring to appointments so you get heard.",
-  },
-  {
-    title: "4. Take Control",
-    content:
-      "Use personalized risk assessments, condition-specific insights, and evidence-based recommendations to advocate for your own health.",
-  },
-];
-
 const navLinks = [
   { href: "#mission", label: "Why Reen" },
   { href: "#app", label: "The App" },
   { href: "#focus", label: "Focus Areas" },
   { href: "#science", label: "Science" },
 ];
-
-function Accordion({
-  items,
-}: {
-  items: { title: string; content: string }[];
-}) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  return (
-    <div className="mx-auto max-w-3xl">
-      {items.map((item, i) => (
-        <div key={item.title} className="border-b border-border">
-          <button
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="flex w-full items-center justify-between py-6 text-left"
-          >
-            <span className="text-lg sm:text-xl font-serif">{item.title}</span>
-            <span className="text-2xl text-muted ml-4 shrink-0">
-              {openIndex === i ? "−" : "+"}
-            </span>
-          </button>
-          <div
-            className={`overflow-hidden transition-all duration-300 ${
-              openIndex === i ? "max-h-40 pb-6" : "max-h-0"
-            }`}
-          >
-            <p className="text-sm text-muted leading-relaxed">
-              {item.content}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -370,79 +294,76 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="px-6 py-24 lg:px-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 max-w-5xl mx-auto text-center">
-          {stats.map((stat) => (
-            <div key={stat.value}>
-              <p className="text-4xl sm:text-5xl lg:text-6xl font-serif text-accent">
-                {stat.value}
-              </p>
-              <p className="mt-4 text-sm text-muted leading-relaxed">
-                {stat.label}
-              </p>
-            </div>
+      {/* The problem */}
+      <section className="px-6 py-20 lg:px-12 max-w-5xl mx-auto">
+        <Reveal>
+          <span className="label-pill">The problem</span>
+          <h2 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-serif leading-snug">
+            Women wait years for answers. Symptoms get dismissed, data gets
+            scattered, and conditions like PCOS and endometriosis take close to
+            a decade to diagnose.
+          </h2>
+        </Reveal>
+        <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-10 text-left">
+          {stats.map((stat, i) => (
+            <Reveal key={stat.value} delay={i * 100}>
+              <p className="text-4xl sm:text-5xl font-serif text-rose">{stat.value}</p>
+              <p className="mt-3 text-sm text-muted leading-relaxed">{stat.label}</p>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* Focus Areas */}
-      <section id="focus" className="px-6 py-24 lg:px-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
-          What We Cover
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
-          Precision Medicine. Personal Results.
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
-          {focusAreas.map((area) => (
-            <div
-              key={area.title}
-              className="bg-white/60 rounded-lg p-8 text-center hover:shadow-md transition-shadow"
-            >
-              <h3 className="text-xl font-serif mb-4">{area.title}</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                {area.description}
-              </p>
-            </div>
-          ))}
+      <section id="focus" className="px-4 pt-6 sm:px-6 lg:px-10">
+        <div className="panel bg-section-alt px-6 py-16 sm:px-12 lg:py-20">
+          <Reveal className="text-center">
+            <span className="label-pill">Focus areas</span>
+            <h2 className="mt-6 text-3xl sm:text-4xl font-serif mb-14">
+              Precision medicine. Personal results.
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {focusAreas.map((area, i) => (
+              <Reveal key={area.title} delay={i * 100}>
+                <div className="bg-white rounded-3xl p-8 h-full hover:shadow-md transition-shadow">
+                  <h3 className="text-xl font-serif mb-4">{area.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">
+                    {area.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* The Science */}
-      <section id="science" className="bg-[#f0ece4] px-6 py-24 lg:px-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
-          Our Approach
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
-          The Science
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl mx-auto">
-          {science.map((item) => (
-            <div key={item.title} className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center text-accent">
-                {item.icon}
-              </div>
-              <h3 className="text-lg font-serif font-bold mb-2">
-                {item.title}
-              </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-          ))}
+      <section id="science" className="px-4 pt-6 sm:px-6 lg:px-10">
+        <div className="panel bg-accent text-cream px-6 py-16 sm:px-12 lg:py-20">
+          <Reveal className="text-center">
+            <span className="label-pill !bg-cream/10 !text-cream">Our approach</span>
+            <h2 className="mt-6 text-3xl sm:text-4xl font-serif mb-16">The science</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl mx-auto">
+            {science.map((item, i) => (
+              <Reveal key={item.title} delay={(i % 3) * 100}>
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center text-cream">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-serif font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm text-cream/70 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-14 text-center text-sm text-cream/60">
+            Reen informs and prepares. It never diagnoses.
+          </p>
         </div>
-      </section>
-
-      {/* Services */}
-      <section className="px-6 py-24 lg:px-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
-          Plans
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
-          Built to grow with you
-        </h2>
-        <Accordion items={services} />
       </section>
 
       {/* App Showcase */}
@@ -488,17 +409,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="bg-[#f0ece4] px-6 py-24 lg:px-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent text-center mb-4">
-          Your Journey
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-serif text-center mb-16">
-          How It Works
-        </h2>
-        <Accordion items={howItWorks} />
       </section>
 
       {/* Waitlist */}
