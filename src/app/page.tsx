@@ -207,11 +207,10 @@ const howItWorks = [
 ];
 
 const navLinks = [
-  { href: "#mission", label: "Mission" },
+  { href: "#mission", label: "Why Reen" },
+  { href: "#app", label: "The App" },
   { href: "#focus", label: "Focus Areas" },
   { href: "#science", label: "Science" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#waitlist", label: "Join the waitlist" },
 ];
 
 function Accordion({
@@ -251,6 +250,13 @@ function Accordion({
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [parallaxY, setParallaxY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setParallaxY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -271,10 +277,7 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a
-            href="#waitlist"
-            className="hidden md:inline-flex rounded-full bg-accent px-5 py-2 text-xs uppercase tracking-widest text-white hover:bg-accent/90 transition-colors"
-          >
+          <a href="#waitlist" className="btn-pill !py-2.5 !px-5 !text-sm hidden md:inline-flex">
             Join the waitlist
           </a>
           <button
@@ -286,35 +289,65 @@ export default function Home() {
         </div>
         {mobileMenuOpen && (
           <nav className="md:hidden px-6 pb-4 flex flex-col gap-3">
-            {navLinks.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className="text-sm text-muted hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {label}
-              </a>
-            ))}
+            {[...navLinks, { href: "#waitlist", label: "Join the waitlist" }].map(
+              ({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="text-sm text-muted hover:text-foreground"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              )
+            )}
           </nav>
         )}
       </header>
 
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-6 py-28 sm:py-36 lg:py-44 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent mb-6">
-          Launching Spring 2026
-        </p>
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.1] max-w-4xl">
-          Paving a new standard for hormonal health
-        </h1>
-        <p className="mt-8 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
-          AI-powered tool for women built by women. Gain insights from your
-          cycle data, symptoms, wearables, and labs for fertility, hormonal
-          imbalances, perimenopause, and cancer risk screening.
-        </p>
-        <div className="mt-10 w-full max-w-lg">
-          <WaitlistForm />
+      <section className="px-4 pt-6 sm:px-6 lg:px-10">
+        <div className="panel bg-section-alt px-6 py-16 sm:px-12 lg:px-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
+          <div>
+            <p className="label-pill mb-6">Coming soon to the App Store</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.05]">
+              Finally understand why you feel this way.
+            </h1>
+            <p className="mt-6 text-base sm:text-lg text-muted max-w-xl leading-relaxed">
+              Reen connects your cycle, symptoms, wearables, and labs into one
+              clear picture of your hormonal health. Be one of the first users.
+            </p>
+            <a href="#waitlist" className="btn-pill mt-8 w-full sm:w-auto sm:min-w-72">
+              Join the waitlist <span aria-hidden>→</span>
+            </a>
+          </div>
+          <div className="relative flex justify-center lg:justify-end">
+            <div
+              className="parallax-float w-60 sm:w-72 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white/70"
+              style={{ transform: `translateY(${parallaxY * -0.06}px)` }}
+            >
+              <Image
+                src="/images/app-home.png"
+                alt="Reen app home screen"
+                width={390}
+                height={844}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
+            <div
+              className="parallax-float absolute -left-2 bottom-6 hidden sm:block w-44 rounded-3xl overflow-hidden shadow-xl border-4 border-white/70"
+              style={{ transform: `translateY(${parallaxY * 0.04}px)` }}
+            >
+              <Image
+                src="/images/app-insights.png"
+                alt="Reen app insights screen"
+                width={390}
+                height={844}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
