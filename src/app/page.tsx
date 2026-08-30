@@ -73,10 +73,22 @@ const focusAreas = [
 ];
 
 const stats = [
-  { value: "20%", label: "Of women struggle with infertility" },
-  { value: "7 years", label: "To receive a diagnosis for endometriosis" },
-  { value: "1 in 3", label: "Women receive poor care for perimenopause" },
-  { value: "106,000", label: "New cases of gynecological cancers yearly" },
+  {
+    value: "1 in 5",
+    label: "US women are unable to get pregnant after a year of trying (CDC)",
+  },
+  {
+    value: "11 years",
+    label: "Average wait for an endometriosis diagnosis in the US",
+  },
+  {
+    value: "40%",
+    label: "Of women report being misdiagnosed when seeking perimenopause care",
+  },
+  {
+    value: "110,000+",
+    label: "New US gynecologic cancer cases expected each year",
+  },
 ];
 
 const science = [
