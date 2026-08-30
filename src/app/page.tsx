@@ -461,16 +461,16 @@ export default function Home() {
             Why I built Reen
           </h2>
           <p className="text-base text-muted leading-relaxed">
-            Reen was built by Mikaela, a nurse who worked in oncology medicine
-            for several years before transitioning careers into an AI/ML
-            engineer and studying data science and AI at Harvard. This app is
-            about a passion for using AI and data to advance women&apos;s
-            health: providing insights for more women so they can better
-            understand their health and get better and faster diagnoses and
-            treatments to feel better.
+            I&apos;m Mikaela. I worked as a nurse in oncology medicine for
+            several years before transitioning careers into an AI/ML engineer
+            and studying data science and AI at Harvard. Reen comes from my
+            passion for using AI and data to advance women&apos;s health:
+            providing insights for more women so they can better understand
+            their health and get better and faster diagnoses and treatments to
+            feel better.
           </p>
           <p className="mt-6 text-base text-muted leading-relaxed">
-            This app was named after my grandma, Noreen{" "}
+            I named this app after my grandma, Noreen{" "}
             <span className="text-rose">♥</span>
           </p>
           <p className="mt-8 font-serif text-xl text-accent">Mikaela</p>
