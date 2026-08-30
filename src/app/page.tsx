@@ -309,9 +309,9 @@ export default function Home() {
 
       {/* Hero */}
       <section className="px-4 pt-6 sm:px-6 lg:px-10">
-        <div className="panel bg-section-alt px-6 py-16 sm:px-12 lg:px-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
-          <div>
-            <p className="label-pill mb-6">Coming soon to the App Store</p>
+        <div className="grid lg:grid-cols-2 gap-4">
+          <div className="panel bg-section-alt px-6 py-16 sm:px-12 lg:px-14 lg:py-24 flex flex-col justify-center">
+            <p className="label-pill mb-6 self-start">Coming soon to the App Store</p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.05]">
               Finally understand why you feel this way.
             </h1>
@@ -319,36 +319,31 @@ export default function Home() {
               Reen connects your cycle, symptoms, wearables, and labs into one
               clear picture of your hormonal health. Be one of the first users.
             </p>
-            <a href="#waitlist" className="btn-pill mt-8 w-full sm:w-auto sm:min-w-72">
+            <a href="#waitlist" className="btn-pill mt-8 w-full sm:w-auto sm:min-w-72 self-start">
               Join the waitlist <span aria-hidden>→</span>
             </a>
           </div>
-          <div className="relative flex justify-center lg:justify-end">
-            <div
-              className="parallax-float w-60 sm:w-72 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white/70"
-              style={{ transform: `translateY(${parallaxY * -0.06}px)` }}
+          <div className="panel bg-accent relative overflow-hidden min-h-72 lg:min-h-0">
+            <svg
+              viewBox="0 0 600 600"
+              preserveAspectRatio="xMidYMid slice"
+              className="absolute inset-0 h-full w-full"
+              aria-hidden
             >
-              <Image
-                src="/images/app-home.png"
-                alt="Reen app home screen"
-                width={390}
-                height={844}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
-            <div
-              className="parallax-float absolute -left-2 bottom-6 hidden sm:block w-44 rounded-3xl overflow-hidden shadow-xl border-4 border-white/70"
-              style={{ transform: `translateY(${parallaxY * 0.04}px)` }}
-            >
-              <Image
-                src="/images/app-insights.png"
-                alt="Reen app insights screen"
-                width={390}
-                height={844}
-                className="w-full h-auto"
-              />
-            </div>
+              {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+                <path
+                  key={i}
+                  d={`M -20 ${80 + i * 75} C 180 ${80 + i * 75}, 260 300, 620 300`}
+                  fill="none"
+                  stroke="#faf6ed"
+                  strokeOpacity="0.5"
+                  strokeWidth="1.5"
+                  className="hero-line"
+                  style={{ animationDelay: `${i * 0.25}s` }}
+                />
+              ))}
+              <circle cx="470" cy="300" r="5" fill="#faf6ed" className="hero-dot" />
+            </svg>
           </div>
         </div>
       </section>
