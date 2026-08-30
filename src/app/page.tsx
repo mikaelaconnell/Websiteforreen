@@ -108,9 +108,9 @@ const science = [
     ),
   },
   {
-    title: "Machine Learning & AI",
+    title: "Our Own Medical Knowledge Engine",
     description:
-      "Advanced algorithms uncover patterns across your data to personalize insights for your unique biology.",
+      "We built Reen's AI on our own medical knowledge engine: every answer is grounded in peer-reviewed research and your own tracked data, not generic internet text.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12">
         <circle cx="24" cy="14" r="4" />
@@ -379,24 +379,22 @@ export default function Home() {
               take control of your hormonal health.
             </p>
           </Reveal>
-          <div className="space-y-24 max-w-5xl mx-auto">
-            {appFeatures.map((feature, i) => (
-              <Reveal key={feature.title}>
-                <div
-                  className={`flex flex-col items-center gap-12 lg:gap-20 ${
-                    i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  <div
-                    className="parallax-float w-56 sm:w-64 shrink-0"
-                    style={{
-                      transform: `translateY(${
-                        (i % 2 === 0 ? -1 : 1) * parallaxY * 0.012
-                      }px)`,
-                    }}
-                  >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {appFeatures.slice(0, 4).map((feature, i) => (
+              <Reveal key={feature.title} delay={(i % 2) * 100}>
+                <div className="bg-white rounded-3xl px-8 pt-8 h-full flex flex-col overflow-hidden">
+                  <p className="text-xs uppercase tracking-[0.3em] text-rose mb-2">
+                    {feature.subtitle}
+                  </p>
+                  <h3 className="text-2xl sm:text-3xl font-serif mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted leading-relaxed mb-8">
+                    {feature.description}
+                  </p>
+                  <div className="relative mt-auto h-72 overflow-hidden">
                     <div
-                      className="phone-bob rounded-[2rem] overflow-hidden shadow-xl border-6 border-white"
+                      className="phone-bob absolute left-1/2 top-4 w-52 -translate-x-1/2 rounded-t-[2rem] overflow-hidden shadow-xl border-6 border-b-0 border-[#f0ece4]"
                       style={{ animationDelay: `${i * 0.8}s` }}
                     >
                       <Image
@@ -408,20 +406,33 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <div
-                    className={`flex-1 ${
-                      i % 2 === 0 ? "lg:text-left" : "lg:text-right"
-                    } text-center`}
-                  >
+                </div>
+              </Reveal>
+            ))}
+            {appFeatures.slice(4).map((feature) => (
+              <Reveal key={feature.title} className="sm:col-span-2">
+                <div className="bg-white rounded-3xl px-8 pt-8 sm:pt-0 h-full grid sm:grid-cols-2 items-center gap-8 overflow-hidden">
+                  <div className="sm:py-10">
                     <p className="text-xs uppercase tracking-[0.3em] text-rose mb-2">
                       {feature.subtitle}
                     </p>
-                    <h3 className="text-2xl sm:text-3xl font-serif mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-serif mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-muted leading-relaxed max-w-md mx-auto lg:mx-0 lg:inline-block">
+                    <p className="text-sm text-muted leading-relaxed">
                       {feature.description}
                     </p>
+                  </div>
+                  <div className="relative h-72 sm:h-80 overflow-hidden">
+                    <div className="phone-bob absolute left-1/2 top-4 w-52 -translate-x-1/2 rounded-t-[2rem] overflow-hidden shadow-xl border-6 border-b-0 border-[#f0ece4]">
+                      <Image
+                        src={feature.image}
+                        alt={`Reen app ${feature.title} screen`}
+                        width={390}
+                        height={844}
+                        className="w-full h-auto"
+                      />
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -443,21 +454,20 @@ export default function Home() {
       </section>
 
       {/* Waitlist */}
-      <section
-        id="waitlist"
-        className="bg-accent text-white px-6 py-24 lg:px-12 text-center"
-      >
-        <p className="text-xs uppercase tracking-[0.3em] opacity-60 mb-4">
-          Be the first
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-serif mb-4">
-          Join the Waitlist
-        </h2>
-        <p className="text-sm opacity-70 mb-10 max-w-lg mx-auto">
-          Launching Spring 2026: AI-powered insights revealing the root causes
-          of women&apos;s health.
-        </p>
-        <WaitlistForm darkMode />
+      <section id="waitlist" className="px-4 py-6 sm:px-6 lg:px-10">
+        <div className="panel bg-accent text-cream px-6 py-20 sm:px-12 lg:py-28 text-center">
+          <Reveal>
+            <span className="label-pill !bg-cream/10 !text-cream">Be one of the first</span>
+            <h2 className="mt-6 text-4xl sm:text-5xl font-serif">Join the waitlist</h2>
+            <p className="mt-4 text-sm sm:text-base text-cream/70 max-w-lg mx-auto leading-relaxed">
+              Reen launches Fall 2026 on the App Store. Sign up and be one of
+              the first users when it arrives.
+            </p>
+            <div className="mt-10">
+              <WaitlistForm darkMode />
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* Footer */}
