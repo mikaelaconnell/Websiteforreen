@@ -13,7 +13,7 @@ export default function WaitlistForm({ darkMode = false }: { darkMode?: boolean 
     setError(false);
     const data = new FormData(e.currentTarget);
     try {
-      const res = await fetch("https://formsubmit.co/ajax/mikaelac14@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/0bd17603eb8d0a6e9128996df53d8325", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },

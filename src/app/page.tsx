@@ -453,6 +453,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Founder note */}
+      <section className="px-6 py-20 lg:px-12">
+        <Reveal className="max-w-2xl mx-auto text-center">
+          <span className="label-pill">A note from the founder</span>
+          <h2 className="mt-6 text-3xl sm:text-4xl font-serif mb-8">
+            Why I built Reen
+          </h2>
+          <p className="text-base text-muted leading-relaxed">
+            Before I was an engineer, I was an oncology nurse. I spent years at
+            the bedside watching women fight for answers about their own
+            bodies. I went on to study data science and AI at Harvard and
+            became an AI engineer, and Reen is where those two lives meet:
+            using AI and real data so more women can understand their health,
+            advocate for themselves, and reach diagnoses and treatment faster.
+          </p>
+          <p className="mt-6 text-base text-muted leading-relaxed">
+            Reen is named after my grandmother, Noreen{" "}
+            <span className="text-rose">♥</span>
+          </p>
+          <p className="mt-8 font-serif text-xl text-accent">Mikaela</p>
+          <p className="text-xs uppercase tracking-widest text-muted mt-1">
+            Founder of Reen
+          </p>
+        </Reveal>
+      </section>
+
       {/* Waitlist */}
       <section id="waitlist" className="px-4 py-6 sm:px-6 lg:px-10">
         <div className="panel bg-accent text-cream px-6 py-20 sm:px-12 lg:py-28 text-center">
