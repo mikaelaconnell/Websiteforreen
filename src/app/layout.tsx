@@ -15,9 +15,9 @@ const abhayaLibre = Abhaya_Libre({
 });
 
 export const metadata: Metadata = {
-  title: "Reen — Hormonal Health, Reimagined",
+  title: "Reen: Hormonal Health, Reimagined",
   description:
-    "Reen is the first AI-powered hormonal health companion delivering personalized care for the real, lived experience of women's health — from first period to menopause.",
+    "Reen is an AI-powered hormonal health companion that connects your cycle, symptoms, wearables, and labs so you can finally understand why you feel this way. Coming soon to the App Store.",
 };
 
 export default function RootLayout({

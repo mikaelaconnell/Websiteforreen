@@ -1,59 +1,8 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-
-function WaitlistForm({ darkMode = false }: { darkMode?: boolean }) {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    await fetch("https://formsubmit.co/ajax/mikaelaconnell14@gmail.com", {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" },
-    });
-    setSubmitted(true);
-    setLoading(false);
-  }
-
-  if (submitted) {
-    return (
-      <p className={`text-sm mt-6 ${darkMode ? "text-white/80" : "text-muted"}`}>
-        You&apos;re on the list! We&apos;ll be in touch.
-      </p>
-    );
-  }
-
-  const inputClass = darkMode
-    ? "flex-1 rounded-full border border-white/30 bg-transparent px-5 py-3 text-sm placeholder-white/50 outline-none focus:border-white transition-colors"
-    : "flex-1 rounded-full border border-gray-300 bg-transparent px-5 py-3 text-sm placeholder-muted outline-none focus:border-foreground transition-colors";
-
-  return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
-      <div className="flex flex-col sm:flex-row gap-4">
-        <input type="text" name="firstName" placeholder="First Name" required className={inputClass} />
-        <input type="text" name="lastName" placeholder="Last Name" required className={inputClass} />
-      </div>
-      <input type="email" name="email" placeholder="Email" required className={`mt-4 w-full ${inputClass}`} />
-      <button
-        type="submit"
-        disabled={loading}
-        className={`mt-6 rounded-full px-8 py-3.5 text-sm uppercase tracking-widest transition-colors ${
-          darkMode
-            ? "bg-white text-accent hover:bg-white/90"
-            : "bg-foreground text-background hover:bg-foreground/90"
-        }`}
-      >
-        {loading ? "Submitting..." : "Get Early Access"}
-      </button>
-    </form>
-  );
-}
+import WaitlistForm from "./components/WaitlistForm";
 
 const appFeatures = [
   {
@@ -262,7 +211,7 @@ const navLinks = [
   { href: "#focus", label: "Focus Areas" },
   { href: "#science", label: "Science" },
   { href: "#how-it-works", label: "How It Works" },
-  { href: "#waitlist", label: "Join Waitlist" },
+  { href: "#waitlist", label: "Join the waitlist" },
 ];
 
 function Accordion({
@@ -326,7 +275,7 @@ export default function Home() {
             href="#waitlist"
             className="hidden md:inline-flex rounded-full bg-accent px-5 py-2 text-xs uppercase tracking-widest text-white hover:bg-accent/90 transition-colors"
           >
-            Join Waitlist
+            Join the waitlist
           </a>
           <button
             className="md:hidden text-foreground"
