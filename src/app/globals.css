@@ -128,6 +128,20 @@ body {
   .hero-dot { animation: none; }
 }
 
+/* Gentle continuous float for phone screenshots */
+@keyframes phone-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.phone-bob {
+  animation: phone-bob 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-bob { animation: none; }
+}
+
 @keyframes word-fade {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }

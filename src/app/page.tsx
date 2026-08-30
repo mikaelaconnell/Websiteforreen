@@ -388,20 +388,25 @@ export default function Home() {
                   }`}
                 >
                   <div
-                    className="parallax-float w-56 sm:w-64 shrink-0 rounded-[2rem] overflow-hidden shadow-xl border-6 border-white"
+                    className="parallax-float w-56 sm:w-64 shrink-0"
                     style={{
                       transform: `translateY(${
                         (i % 2 === 0 ? -1 : 1) * parallaxY * 0.012
                       }px)`,
                     }}
                   >
-                    <Image
-                      src={feature.image}
-                      alt={`Reen app ${feature.title} screen`}
-                      width={390}
-                      height={844}
-                      className="w-full h-auto"
-                    />
+                    <div
+                      className="phone-bob rounded-[2rem] overflow-hidden shadow-xl border-6 border-white"
+                      style={{ animationDelay: `${i * 0.8}s` }}
+                    >
+                      <Image
+                        src={feature.image}
+                        alt={`Reen app ${feature.title} screen`}
+                        width={390}
+                        height={844}
+                        className="w-full h-auto"
+                      />
+                    </div>
                   </div>
                   <div
                     className={`flex-1 ${
