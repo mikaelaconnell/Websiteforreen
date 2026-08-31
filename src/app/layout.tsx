@@ -15,9 +15,21 @@ const abhayaLibre = Abhaya_Libre({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://reen-health.com"),
   title: "Reen: Hormonal Health, Reimagined",
   description:
     "Reen is an AI-powered hormonal health companion that connects your cycle, symptoms, wearables, and labs so you can finally understand why you feel this way. Launching Fall 2026 on the App Store.",
+  openGraph: {
+    title: "Reen: Hormonal Health, Reimagined",
+    description:
+      "An AI-powered hormonal health companion that connects your cycle, symptoms, wearables, and labs. Launching Fall 2026 on the App Store.",
+    url: "https://reen-health.com",
+    siteName: "Reen",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
