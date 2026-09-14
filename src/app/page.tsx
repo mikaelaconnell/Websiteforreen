@@ -33,7 +33,7 @@ const appFeatures = [
     title: "Reports",
     subtitle: "Clinical-grade summaries",
     description:
-      "Generate HIPAA-compliant health reports for your doctor with one tap. Your data, professionally presented.",
+      "Generate encrypted health report summaries for your doctor with one tap. Your data, professionally presented.",
     image: "/images/app-reports.png",
   },
   {
