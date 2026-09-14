@@ -515,7 +515,15 @@ export default function Home() {
             Join the waitlist
           </a>
         </div>
-        <p className="text-center text-xs text-muted mt-6">
+        <div className="flex justify-center gap-6 text-xs text-muted mt-6">
+          <a href="/privacy" className="hover:text-foreground transition-colors">
+            Privacy Policy
+          </a>
+          <a href="/terms" className="hover:text-foreground transition-colors">
+            Terms of Service
+          </a>
+        </div>
+        <p className="text-center text-xs text-muted mt-4">
           &copy; {new Date().getFullYear()} Reen. All rights reserved.
         </p>
       </footer>
